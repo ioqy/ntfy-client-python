@@ -110,8 +110,11 @@ for arg in arg_dict:
     if arg_dict[arg] != None:
         headers[arg] = arg_dict[arg].encode("utf-8")
 
+if message != None:
+    message = message.encode("utf-8")
+
 response = requests.post(urljoin(server, topic),
-                         data=message.encode("utf-8"),
+                         data=message,
                          headers=headers)
 
 if (verbose
